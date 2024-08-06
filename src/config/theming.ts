@@ -1,15 +1,14 @@
 import plugin from 'tailwindcss/plugin'
 import themeConfig from '../lib/tailwind/themeConfig'
 
-// TODO: 
-// Root Is Theme Angonistic 
-// Light - Ligght Mode
-// Dark - Dark Mode
-
 export const theming = plugin(
   function ({ addBase, theme }) {
     addBase({
       ':root': {
+
+        // "--roboto": var('--font-roboto'),
+        // "--montserrat": var('--font-montserrat'),
+
 
         // =============================================================
         // Border Radius
@@ -23,11 +22,11 @@ export const theming = plugin(
         // =============================================================
         // - Input
         // - Button
-        
+
         // =============================================================
         // Component: Input
         // =============================================================
-        
+
 
         // =============================================================
         // Component: Button
@@ -69,7 +68,7 @@ export const theming = plugin(
 
         // Outline
         // --------------------------------------------
-        
+
 
 
 
@@ -177,7 +176,14 @@ export const theming = plugin(
   },
   {
     theme: {
-      ...themeConfig.theme
+      ...themeConfig.theme,
+      extend: {
+        ...themeConfig.theme.extend,
+        fontFamily: {
+          roboto: ['var(--font-roboto)'],
+          montserrat: ['var(--font-montserrat)'],
+        }
+      }
     }
   }
 )

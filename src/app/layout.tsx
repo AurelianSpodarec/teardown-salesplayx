@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import ContextProvider from '@/context'
-import { cabinSketch, neucha } from "@/config/fonts";
+import { archivoBlack, bebasNeue, montserrat, roboto } from "@/config/fonts";
 
 import './../styles/styles.scss'
 
@@ -9,14 +9,10 @@ export const metadata: Metadata = {
   description: "Automate time tracking with just one click",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
-      <body suppressHydrationWarning={true} className={`${cabinSketch.variable} ${neucha.variable}`}>
+      <body suppressHydrationWarning={true} className={`${roboto.variable} ${montserrat.variable} ${bebasNeue.variable} ${archivoBlack.variable}`}>
         <ContextProvider>
           {children}
         </ContextProvider>

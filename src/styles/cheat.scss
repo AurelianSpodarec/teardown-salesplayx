@@ -1,3 +1,11 @@
 // ==========================================================================
 // # Cheat - Hot fixes and quick code; needs cleaning up afterwards
 // ==========================================================================
+
+.shadow-lg-soft {
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
+  // -tw-shadow:
+  //   0 2px 16px -1px rgba(0, 0, 0, 0.15),
+  //   0 0 70px 12px rgba(0, 48, 61, 0.07) !important;
+  // --tw-shadow-colored: 0 2px 16px -1px var(--tw-shadow-color), 0 0 70px 12px var(--tw-shadow-color) !important;
+}
