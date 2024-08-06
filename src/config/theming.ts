@@ -9,6 +9,7 @@ export const theming = plugin(
         // "--roboto": var('--font-roboto'),
         // "--montserrat": var('--font-montserrat'),
 
+        
 
         // =============================================================
         // Border Radius
@@ -31,17 +32,18 @@ export const theming = plugin(
         // =============================================================
         // Component: Button
         // =============================================================
-        '--button-primary': "#eb6864",
+        '--button-primary': "#be185d",
         '--button-secondary': "#aaaaaa",
-        '--button-border-radius': "var(--border-sketchy-1)",
+        '--button-border-radius': "40px",
         '--button-border-color': "#221110",
 
         // Button Sizes
         // ===================================================
-        '--button-size-sm-padding': `${theme('padding.2')} ${theme('padding.4')}`,
-        '--button-size-sm-foreground': theme('fontSize.sm'),
+        '--button-size-sm-padding': `${theme('padding.3')} ${theme('padding.4')}`,
+        '--button-size-sm-foreground': theme('fontSize.xs'),
+        // '--button-size-sm-text'
 
-        '--button-size-md-padding': `${theme('padding.3')} ${theme('padding.6')}`,
+        '--button-size-md-padding': `${theme('padding.5')} ${theme('padding.6')}`,
         '--button-size-md-foreground': theme('fontSize.md'),
 
         '--button-size-lg-padding': `${theme('padding[3.5]')} ${theme('padding.7')}`,
@@ -52,6 +54,7 @@ export const theming = plugin(
 
         // Solid
         // --------------------------------------------
+        '--button-primary-solid-foreground': "#fff",
         '--button-primary-solid-hover': "",
         '--button-primary-solid-border': "",
 
@@ -182,6 +185,8 @@ export const theming = plugin(
         fontFamily: {
           roboto: ['var(--font-roboto)'],
           montserrat: ['var(--font-montserrat)'],
+          bebas: ['var(--font-bebas-neue)'],
+          archivo: ['var(--font-archivo-black)']
         }
       }
     }

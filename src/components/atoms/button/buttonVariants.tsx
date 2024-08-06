@@ -33,7 +33,7 @@ const buttonVariants = cva(
       {
         variant: 'primary',
         kind: 'solid',
-        className: `bg-button-primary hover:bg-button-primary/50
+        className: `bg-button-primary text-button-primary-solid-foreground font-semibold hover:bg-button-primary/50
                     
                     `
       },

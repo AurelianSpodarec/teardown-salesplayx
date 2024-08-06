@@ -91,7 +91,13 @@ const themeConfig = {
         // BUTTON
         // --------------------------------------------------------
         button: {
-          primary: "var(--button-primary)",
+          
+          primary: {
+            DEFAULT: "var(--button-primary)",
+            "solid-foreground": "var(--button-primary-solid-foreground)",
+            
+          },
+
           secondary: "var(--button-secondary)",
           "border-color": "var(--button-border-color)"
         },
@@ -114,6 +120,7 @@ const themeConfig = {
         "dashboard-sidebar-dropdown-menu": "var(--border-sketchy-1)"
       },
       fontSize: {
+        'button-size-xs-foreground': "var(--button-size-xs-foreground)",
         'button-size-sm-foreground': "var(--button-size-sm-foreground)",
         'button-size-md-foreground': "var(--button-size-md-foreground)",
         'button-size-lg-foreground': "var(--button-size-lg-foreground)"
