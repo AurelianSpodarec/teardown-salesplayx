@@ -21,7 +21,7 @@ function Section({ id, className, style, children, size = "md" }: ISectionProps)
   };
 
   return (
-    <section aria-labelledby={useID} id={id} className={`${className} ${sizes[size]} bg-white`} style={style}>
+    <section aria-labelledby={useID} id={id} className={`${className} ${sizes[size]} bg-white relative`} style={style}>
       {children}
     </section>
   )
