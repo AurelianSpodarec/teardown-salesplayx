@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 function HomeSectionCTA() {
   return (
     <section className="bg-[#8f4764] relative overflow-hidden">
@@ -34,7 +36,9 @@ function HomeSectionCTA() {
                 </svg>
               </button>
             </div>
-            <img src="assets/images/cta-meg.png" className="absolute right-[108px] w-[440px] top-0 z-10" />
+            <Link href="/book-demo">
+              <img src="assets/images/cta-meg.png" className="absolute right-[108px] w-[440px] top-0 z-10 hover:scale-105 cursor-pointer block" />
+            </Link>
           </div>
 
         </div>

@@ -1,7 +1,16 @@
 import { ReactNode } from 'react';
 
-function Container({ id, style, size, className, children }: ContainerProps) {
-  const options: any = {
+interface IContainerProps {
+  id?: string;
+  children: ReactNode;
+  className?: string;
+  style?: object;
+  size?: string;
+}
+
+function Container({ id, style, size, className, children }: IContainerProps) {
+  const options: { [key: string]: string } = {
+    clear: "",
     fluid: 'max-w-none',
     sm: 'max-w-sm',
     base: 'max-w-base',
@@ -10,6 +19,11 @@ function Container({ id, style, size, className, children }: ContainerProps) {
     lg: 'max-w-lg',
     xl: 'max-w-xl',
     '2xl': 'max-w-2xl',
+    '3xl': 'max-w-3xl',
+    '4xl': 'max-w-4xl',
+    '5xl': 'max-w-5xl',
+    '6xl': 'max-w-6xl',
+    '7xl': 'max-w-7xl',
   };
 
   return (
@@ -24,11 +38,3 @@ function Container({ id, style, size, className, children }: ContainerProps) {
 }
 
 export default Container;
-
-interface ContainerProps {
-  id?: string;
-  style?: object;
-  size?: string;
-  className?: string;
-  children: ReactNode;
-}
