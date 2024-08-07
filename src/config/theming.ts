@@ -34,7 +34,7 @@ export const theming = plugin(
         // =============================================================
         '--button-primary': "#be185d",
         '--button-secondary': "#aaaaaa",
-        '--button-border-radius': "40px",
+        '--button-border-radius': `${theme('borderRadius.2xl')}`,
         '--button-border-color': "#221110",
 
         // Button Sizes
