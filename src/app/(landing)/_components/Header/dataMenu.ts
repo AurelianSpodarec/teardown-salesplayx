@@ -10,16 +10,16 @@ const dataMenu: IMenuItem[] = [
     url: "/",
   },
   {
+    name: "Solutions",
+    url: "/solutions",
+  },
+  {
     name: "About",
     url: "/about",
   },
   {
-    name: "Process",
-    url: "/process",
-  },
-  {
     name: "Blog",
-    url: "aurelianspodarec.co.uk/blog",
+    url: "/blog",
   },
 ]
 
