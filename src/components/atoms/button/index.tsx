@@ -46,12 +46,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
       {...props}
     >
       <>
-        {/* <ButtonRing variant={variant} ring={ring}> */}
-
         {icon && (
           !isLoading || iconPosition !== 'right' &&
           <div className="flex items-center max-h-4 max-w-4 h-4 w-4 select-none pointer-events-none wop">
-            {icon}  
+            {icon}
           </div>
         )}
         {icon && (
@@ -72,7 +70,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
           </svg>
         )}
 
-        {/* </ButtonRing> */}
       </>
     </Comp>
   )
@@ -81,36 +78,3 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
 Button.displayName = 'Button'
 
 export { Button, buttonVariants }
-
-
-
-
-
-
-// Notes questiona bout culture
-// publish a lot of pdfs
-// Chatbox
-
-// - 
-
-
-// Selling point: Adming panel
-
-
-//You ahve 10000 docments in milllins, propartarty contnt
-
-// not going to read it , need ai to summarise - best possible manner
-// What value does it give summarising it - very imporant, the end users need answers to questions about to theri business
-// customers: bank
-// HR  - lots of questions; use starlink Ai chat box, only starlink has info produced by starlink - what does it mean for you to answer all questions about starlink?
-// Specific to all, starlink advisers leading consulting firm - chatgpt is generic
-// no ability to tweak chatpgt resones
-
-
-// see what  they are asking for better content
-
-// charge for chat, free chat and we can adust it to lead generate
-
-// ai cool cutting edge
-
-// experts consult to banks

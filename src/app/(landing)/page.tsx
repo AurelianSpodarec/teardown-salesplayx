@@ -13,12 +13,12 @@ function LandingHome() {
   return (
     <div className=" h-full">
       <Header />
-      {/* <HomeSectionHero />
-      <HomeSectionLogos />
-      <HomeSectionVPS />
-      <HomeSectionTestimonials />
-      <HomeSectionCTA />
-      <Footer /> */}
+      <HomeSectionHero />
+      {/* <HomeSectionLogos /> */}
+      {/* <HomeSectionVPS /> */}
+      {/* <HomeSectionTestimonials /> */}
+      {/* <HomeSectionCTA /> */}
+      {/* <Footer /> */}
     </div>
   );
 }
