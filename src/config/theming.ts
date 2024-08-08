@@ -186,7 +186,8 @@ export const theming = plugin(
           roboto: ['var(--font-roboto)'],
           montserrat: ['var(--font-montserrat)'],
           bebas: ['var(--font-bebas-neue)'],
-          archivo: ['var(--font-archivo-black)']
+          archivo: ['var(--font-archivo-black)'],
+          cabinSketch: ['var(--font-cabin-sketch)']
         }
       }
     }

@@ -37,7 +37,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
       ref={ref}
       className={
         cn( `
-          inline-flex justify-center leading-4 items-center
+          inline-flex justify-center leading-4 items-center z-10 relative
           ${!children && isLoading && !label ? '' : 'gap-2'}
           ${iconPosition === 'right' && !isLoading ? 'flex-row-reverse' : ''}
           ${block ? 'w-full' : ''}

@@ -68,7 +68,7 @@ function HomeSectionTestimonials() {
           }))}
         </div>
         <div className="text-right">
-          <Link href="/stories" className="text-pink-700 font-roboto">Read more stories --></Link>
+          <Link href="/stories" className="text-pink-700 text-lg font-cabinSketch">Read more stories --</Link>
         </div>
       </Container>
     </Section >

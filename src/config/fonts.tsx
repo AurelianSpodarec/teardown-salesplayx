@@ -1,6 +1,13 @@
-import { Archivo_Black, Bebas_Neue, Roboto, Montserrat } from 'next/font/google'
+import { Archivo_Black, Bebas_Neue, Roboto, Montserrat, Cabin_Sketch } from 'next/font/google'
 
 // din-2014 and proxima-nova(montserrat); get a licence
+
+export const cabinSketch = Cabin_Sketch({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-cabin-sketch'
+})
 
 export const archivoBlack = Archivo_Black({
   weight: ['400'],

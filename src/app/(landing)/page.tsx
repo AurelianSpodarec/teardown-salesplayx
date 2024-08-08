@@ -11,15 +11,17 @@ import HomeSectionCTA from "./home/_sections/CTA"
 
 function LandingHome() {
   return (
-    <div className=" h-full">
+    <>
       <Header />
-      <HomeSectionHero />
-      <HomeSectionLogos />
-      <HomeSectionVPS />
-      <HomeSectionTestimonials />
-      <HomeSectionCTA />
-      {/* <Footer /> */}
-    </div>
+      <main className="relative z-10">
+        <HomeSectionHero />
+        <HomeSectionLogos />
+        <HomeSectionVPS />
+        <HomeSectionTestimonials />
+        <HomeSectionCTA />
+      </main>
+      <Footer />
+    </>
   );
 }
 
