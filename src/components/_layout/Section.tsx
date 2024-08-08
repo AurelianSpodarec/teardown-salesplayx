@@ -6,10 +6,16 @@ interface ISectionProps extends React.HTMLAttributes<HTMLElement> {
   className?: string;
   style?: React.CSSProperties;
   size?: "clean" | "xs" | "sm" | "md" | "lg";
+  colors?: "default" | "brand";
 }
 
-function Section({ id, className, style, children, size = "md" }: ISectionProps) {
+function Section({ id, className, style, children, color = "default", size = "md" }: ISectionProps) {
   let useID = useId()
+
+  const colors = {
+    default: "bg-white",
+    brand: "bg-[#8f4764]",
+  }
 
   const sizes = {
     clean: "",
@@ -21,7 +27,7 @@ function Section({ id, className, style, children, size = "md" }: ISectionProps)
   };
 
   return (
-    <section aria-labelledby={useID} id={id} className={`${className ? className : ""} ${sizes[size]} bg-white relative`} style={style}>
+    <section aria-labelledby={useID} id={id} className={`${className ? className : ""} ${sizes[size]} ${colors[color]} relative z-[-5]`} style={style}>
       {children}
     </section>
   )

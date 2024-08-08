@@ -16,8 +16,8 @@ function LandingHome() {
       <HomeSectionHero />
       <HomeSectionLogos />
       <HomeSectionVPS />
-      {/* <HomeSectionTestimonials /> */}
-      {/* <HomeSectionCTA /> */}
+      <HomeSectionTestimonials />
+      <HomeSectionCTA />
       {/* <Footer /> */}
     </div>
   );

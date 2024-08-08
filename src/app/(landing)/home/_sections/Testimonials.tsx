@@ -1,5 +1,8 @@
 import Link from "next/link"
 
+import Container from "@/components/_layout/Container"
+import Section from "@/components/_layout/Section"
+
 const dataTestimonials = [
   {
     name: "Megan Murray",
@@ -33,7 +36,7 @@ function CardTestimonial({ item: { name, title, image, quote } }: { item: ITesti
     <figure className="border border-gray-200 rounded-xs">
       <div className="p-8">
         <figcaption className="mb-4 items-center">
-          <div className="overflow-hidden rounded-full w-24 h-24 -mt-4 -ml-4 mb-4">
+          <div className="overflow-hidden rounded-full w-20 h-20 lg:w-24 lg:h-24 -mt-4 -ml-4 mb-4">
             <img src={`assets/images/testimonials/${image}`} className="object-cover w-full h-full" />
           </div>
           <div>
@@ -51,14 +54,15 @@ function CardTestimonial({ item: { name, title, image, quote } }: { item: ITesti
 
 function HomeSectionTestimonials() {
   return (
-    <section className="pt-10">
+    <Section className="pt-10">
       <header className="text-center max-w-[580px] mx-auto">
         <h2 className="text-center text-4xl font-semibold font-roboto">
           Our <span className="text-pink-700">customers</span> have a lot to say about <span className="hand-underline">adopting</span> SalesPlayX
         </h2>
       </header>
-      <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-3 gap-6 pt-12 pb-6">
+
+      <Container size="max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-12 pb-6">
           {dataTestimonials.map((testimonial => {
             return <CardTestimonial item={testimonial} />
           }))}
@@ -66,8 +70,8 @@ function HomeSectionTestimonials() {
         <div className="text-right">
           <Link href="/stories" className="text-pink-700 font-roboto">Read more stories --></Link>
         </div>
-      </div>
-    </section >
+      </Container>
+    </Section >
   )
 }
 
