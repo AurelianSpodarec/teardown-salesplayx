@@ -36,12 +36,12 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
     <Comp
       ref={ref}
       className={
-        cn(buttonVariants({ variant, kind, size, className }), `
+        cn( `
           inline-flex justify-center leading-4 items-center
           ${!children && isLoading && !label ? '' : 'gap-2'}
           ${iconPosition === 'right' && !isLoading ? 'flex-row-reverse' : ''}
           ${block ? 'w-full' : ''}
-        `)
+        `, buttonVariants({ variant, kind, size, className }),)
       }
       {...props}
     >

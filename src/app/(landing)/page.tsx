@@ -14,8 +14,8 @@ function LandingHome() {
     <div className=" h-full">
       <Header />
       <HomeSectionHero />
-      {/* <HomeSectionLogos /> */}
-      {/* <HomeSectionVPS /> */}
+      <HomeSectionLogos />
+      <HomeSectionVPS />
       {/* <HomeSectionTestimonials /> */}
       {/* <HomeSectionCTA /> */}
       {/* <Footer /> */}

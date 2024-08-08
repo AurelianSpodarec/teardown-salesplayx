@@ -1,230 +1,159 @@
+import Section from "@/components/_layout/Section"
 import Marker from "@/utils/Marker"
+
+interface ITemplateVPSProps {
+  children: React.ReactNode
+  image: string
+  reverse?: boolean
+}
+
+function TemplateVPS({ children, image, reverse }: ITemplateVPSProps) {
+  return (
+    <section className={
+      `${reverse ? "flex-row-reverse" : ""} 
+      load-animation reveal flex flex-wrap items-center mb-16 lg:px-24 md:mb-24 xl:mb-40 max-w-3xl xl:max-w-none mx-auto`}
+    >
+
+      <div className="relative flex items-center w-full xl:w-1/2 px-4">
+        <img src={image} alt="" width="1226" height="864" className="cursor-play rounded-xl shadow-video order border-gray-200 border" />
+      </div>
+
+      <div className={`relative w-full xl:w-1/2 px-4 flex items-center mb-16 md:mb-24 xl:mb-0 ${reverse ? "lg:pr-24 " : "lg:pl-24 "} `}>
+        {children}
+      </div>
+    </section>
+  )
+}
+
+function IconArrows() {
+  return (
+    <svg
+      className="mx-auto mt-28 -mb-8"
+      xmlns="http://www.w3.org/2000/svg"
+      width="54"
+      height="288"
+      viewBox="0 0 54 288"
+    >
+      <defs>
+        <path d="M0.430196335 0.948688355L2.537 0.948688355 2.537 9.74376852 0.430196335 9.74376852z"></path>
+      </defs>
+      <g
+        fill="none"
+        fillRule="evenodd"
+        transform="translate(-451 -5965) translate(451 5965)"
+      >
+        <g transform="translate(51 14)">
+          <mask id="mask-2" fill="#fff">
+            <use></use>
+          </mask>
+          <path
+            fill="#010202"
+            d="M1.278 9.463C1.068 7.897.806 6.6.68 5.296.564 4.079.41 2.853.432 1.633.435 1.391 1.13.938 1.486.95c.366.011 1.01.471 1.02.764.026 1.107.053 2.215.01 3.32l-.18 3.313c-.024.384.046.793-.079 1.142-.052.155-.42.275-.63.253-.175-.018-.328-.26-.348-.278"
+            mask="url(#mask-2)"
+          ></path>
+        </g>
+        <path
+          fill="#010202"
+          d="M52.506 30.009c.58.374.494 1.072.483 1.671-.005 1.284-.254 2.55-.456 3.804-.142.86-.432 1.685-.484 2.543-.052.639-.29.912-.836.973-.069.008-.215-.152-.213-.228.057-2.058.245-3.939.242-5.987-.016-.41-.078-.818-.119-1.226-.084-.815.527-1.654 1.383-1.55M51.726 7.697c-.326-1.173-.68-3.16-.982-3.966-.259-.791-.613-1.561-.736-2.373-.06-.4.243-.93.503-1.316.08-.12.56.052.856.098 1.254.194 1.022 1.339 1.193 2.23.09.473.156 1.364.222 2.25.027.893.06 1.781.148 2.255.208 1.11-.02 1.28-1.05 1.016-.146-.037-.235-.31-.154-.194M42 67.381l1.073-4.419a35.23 35.23 0 011.184-3.731c.087-.24.836-.317 1.136-.114.306.21.688 1.016.592 1.314-.382 1.112-.83 2.183-1.267 3.261l-.667 1.604-.726 1.564c-.168.364-.282.792-.507 1.076-.1.127-.454.047-.623-.088-.141-.113-.184-.439-.195-.467M39.769 73.326c.471.732.113 1.314-.12 1.86-.498 1.173-1.202 2.195-1.86 3.236-.462.702-1.07 1.278-1.437 2.037-.276.566-.616.674-1.205.39-.073-.036-.17-.277-.142-.348.78-1.908 1.71-3.493 2.422-5.43.144-.384.229-.804.34-1.205.221-.806 1.167-1.184 2.002-.54M48.022 52.28c.202-1.166.54-3.108.653-3.934.097-.81.12-1.64.288-2.419.09-.381.518-.7.86-.919.106-.068.433.311.655.493.929.762.379 1.667.164 2.517-.22.91-1.153 3.2-1.346 4.112-.258 1.061-.505 1.102-1.226.39-.102-.1-.068-.38-.048-.24M19 104.33c.575-1.513 1.04-2.803 1.617-4.018a21.557 21.557 0 011.84-3.224c.141-.197.908-.04 1.164.24.26.289.483 1.138.328 1.375-1.154 1.803-2.4 3.524-3.555 5.327-.202.312-.36.69-.606.93-.11.105-.463-.015-.625-.162-.137-.126-.154-.44-.163-.468M16.73 109.296c.526.68.163 1.24-.08 1.76-.534 1.095-1.175 2.146-1.82 3.187-.426.72-1.074 1.323-1.358 2.11-.217.584-.572.745-1.264.594-.087-.02-.227-.23-.206-.303.548-1.993 1.513-3.598 2.15-5.563.125-.393.23-.79.342-1.19.233-.798 1.288-1.21 2.236-.595M27.047 90.99c.54-1.047 1.572-2.683 1.95-3.422.368-.72.668-1.502 1.132-2.129.23-.31.77-.403 1.186-.439.128-.01.31.494.46.766.642 1.146-.246 1.68-.731 2.38-.513.746-2.197 2.45-2.68 3.216-.566.897-.828.841-1.34-.124-.073-.136.044-.391.023-.249M3 145.605c.103-1.656.116-3.073.295-4.46.18-1.29.423-2.584.78-3.819.067-.25.857-.424 1.186-.265.333.16.8.863.732 1.15-.545 2.178-1.221 4.314-1.747 6.507-.097.38-.125.803-.298 1.13-.075.146-.453.188-.654.12-.169-.055-.278-.34-.294-.363M2.544 152.032c.573.435.458 1.104.422 1.688-.079 1.245-.332 2.472-.499 3.71-.123.845-.411 1.67-.436 2.516-.023.633-.233.925-.783 1.053-.069.016-.229-.127-.233-.204-.07-2.077.124-3.982.119-6.07 0-.417-.043-.834-.067-1.251-.046-.844.615-1.646 1.477-1.442M8.02 130.233c.16-1.219.65-3.15.799-4 .15-.823.216-1.703.477-2.463.131-.373.548-.619.873-.767.1-.046.33.405.5.63.707.95.097 1.7-.129 2.537-.239.883-1.239 3.046-1.417 3.966-.229 1.064-.445 1.103-1.064.347-.088-.106-.056-.397-.04-.25M3.114 190.846c-.56-1.515-1.095-2.79-1.432-4.144-.358-1.253-.56-2.57-.681-3.88-.028-.262.606-.808.941-.822.346-.016.976.397 1.018.687.265 2.224.447 4.476.853 6.677.066.385.203.767.185 1.151 0 .166-.294.419-.486.477-.164.048-.376-.135-.398-.146M4.934 196.01c.764-.093.974.525 1.218 1.017.257.528.54 1.036.767 1.587.233.547.449 1.11.729 1.621.375.7.541 1.613 1.071 2.17.376.433.37.842.01 1.485-.046.08-.26.143-.31.091-.343-.34-.666-.692-.98-1.052-.307-.367-.561-.774-.838-1.164l-.82-1.192a25.066 25.066 0 00-.805-1.249c-.223-.334-.51-.62-.743-.95-.466-.67-.233-1.87.701-2.365M.529 174.605c-.152-1.181-.225-3.165-.323-4.008-.103-.819-.245-1.646-.196-2.46.023-.402.367-.826.648-1.12.086-.09.446.205.679.327.983.514.589 1.49.566 2.356.006.914-.331 3.357-.291 4.277.056 1.07-.132 1.21-.971.835-.119-.053-.17-.331-.112-.207M32.888 210.077c-1.295.863-2.431 1.54-3.64 2.058-.568.212-1.148.42-1.74.577-.596.125-1.196.248-1.8.288-.247.01-.713-.788-.708-1.21.006-.434.392-1.212.648-1.233 1.957-.244 3.93-.61 5.867-1.23.34-.099.667-.302 1.003-.327.15-.008.401.34.47.575.056.2-.092.473-.1.502M37.023 207.044c-.141-.85.408-1.131.827-1.468.9-.688 1.92-1.259 2.857-1.87.632-.42 1.374-.723 1.83-1.322.328-.446.668-.486 1.31-.21.083.033.182.268.145.336-1.006 1.85-2.578 2.91-3.974 4.273l-.812.878c-.55.601-1.656.407-2.183-.617M19.434 211.975c-1.118-.053-2.906-.656-3.66-.928l-1.15-.318a5.53 5.53 0 01-1.054-.551c-.327-.224-.492-.81-.57-1.25-.021-.136.427-.381.656-.578.97-.842 1.46.054 2.153.409.367.167.999.575 1.643.987.659.364 1.352.678 1.745.779.932.163 1.01.45.453 1.368-.08.129-.343.12-.216.082M26.112 186.847c1.35-.538 2.56-.833 3.824-.847 1.175-.006 2.411.147 3.59.578.243.08.545 1.03.459 1.444-.085.415-.574 1.044-.805.972-1.797-.55-3.687-1.064-5.631-1.022-.34-.011-.66.126-1.006.06-.153-.03-.436-.46-.523-.723-.076-.232.088-.428.092-.462M21.843 190.684c.352.963.028 1.432-.153 1.959l-.079.218c-.363 1.02-.72 1.998-.989 3.045-.188.76-.537 1.443-.562 2.303-.02.635-.252.836-.824.783-.07-.006-.229-.21-.23-.294-.028-1.13.037-2.21.183-3.273.134-1.065.317-2.124.555-3.246.088-.42.162-.86.261-1.29l.02-.081c.246-.906 1.12-1.187 1.818-.124M39.748 191.03c1.027.34 2.608 1.303 3.27 1.784.656.427 1.37.904 1.836 1.644.246.354.136.995 0 1.39-.044.124-.528.069-.806.12-1.127.2-1.184-.583-1.698-1.118-.246-.273-.707-.802-1.229-1.308-.529-.493-1.111-.954-1.472-1.128-.834-.405-.853-.67-.123-1.364.104-.098.35-.023.222-.02M19.967 228.804a43.103 43.103 0 01-1.32-4.186c-.297-1.254-.602-2.53-.647-3.827-.01-.26.703-.782 1.084-.79.39-.009 1.097.414 1.123.708.243 2.229.433 4.471.64 6.718.053.39.187.786.145 1.161-.02.168-.373.38-.596.41-.187.026-.403-.181-.429-.194M21.14 235c.704.1.79.784.93 1.344.3 1.194.404 2.467.58 3.712.119.852.067 1.765.286 2.567.164.602.02.98-.505 1.36-.067.047-.266-.011-.29-.081-.648-1.904-1.006-3.757-1.607-5.69-.123-.383-.292-.744-.44-1.116-.298-.751.124-1.832 1.047-2.096"
+        ></path>
+        <path
+          fill="#010202"
+          d="M17.567 212.619c-.152-1.18-.363-3.168-.387-4.013-.068-.82-.217-1.654-.171-2.473.023-.405.366-.829.646-1.117.086-.089.446.213.68.338.983.529.592 1.49.57 2.354 0 .455-.138 1.287-.2 2.125-.051.838-.1 1.68-.066 2.135.078 1.07-.126 1.215-.96.855-.119-.05-.17-.327-.112-.204M29.132 272.812c-.49-1.542-.906-2.82-1.295-4.122-.349-1.218-.648-2.468-.835-3.738-.037-.252.505-.876.825-.943.327-.069.97.26 1.024.556.405 2.251.736 4.52 1.003 6.81.05.398.171.8.141 1.187-.013.172-.31.397-.497.435-.16.031-.345-.173-.366-.185M30.455 279c.84.14.913.831 1.056 1.4.328 1.213.327 2.504.402 3.767.047.866-.12 1.758.052 2.586.127.621-.087.969-.765 1.24-.084.033-.315-.06-.337-.133-.567-1.957-.746-3.819-1.304-5.757-.119-.385-.311-.749-.47-1.12-.32-.747.243-1.77 1.366-1.983M25.946 256.792c-.387-1.155-.896-3.142-1.17-3.959-.265-.795-.61-1.563-.762-2.398-.074-.412.154-.976.353-1.385.061-.127.48.024.734.054 1.073.125.932 1.282 1.128 2.172.205.945.41 3.584.65 4.515.278 1.09.103 1.3-.787 1.178-.126-.017-.228-.285-.146-.177"
+        ></path>
+      </g>
+    </svg>
+  )
+}
+
+const dataVPS = {
+  section1: {
+    list: [" CRM Data Collection", "Personalized Content", "Data Collection", "Real-Time Engagement Monitoring"]
+  },
+  section2: {
+    list: ["Create and share Joint Pursuit Plans with partners.", "Generate co-branded documents in various brand combinations.", "Use AI to apply the best sales play and generate account-specific points of view.", "Tag partners to selectively use relevant customer stories in co-selling."]
+  },
+  section3: {
+    list: ["Upload top 50 accounts for industry news and AI-generated points of view.", "Find key contacts and their information within accounts.", "AI creates prospecting sequences and lead generation materials.", "Generate value cases and proposals to aid deal approvals."],
+  }
+}
+
+function RenderListCollection({ data }) {
+  return (
+    <ul>
+      {data.map((item) => {
+        return (
+          <li className="mb-3 flex">
+            <div className="mr-2">
+              <div className="w-6 h-6 flex items-center justify-center rounded-full text-brand-blue border-2 border-brand-blue">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              </div>
+            </div>
+            <div>
+              <p>
+                {item}
+              </p>
+            </div>
+          </li>
+        )
+      })}
+    </ul>
+  )
+}
+
 
 function HomeSectionVPS() {
   return (
-    <section className="py-20 relative">
+    <Section id="vps">
 
       <header className="text-center max-w-[880px] mx-auto">
         <span className="block uppercase tracking-wider font-bold text-sm mb-6">40% of time is spent on sales prep</span>
-        <h2 className="text-center text-[54px] leading-tight font-semibold font-roboto">
+        <h2 className="text-center text-lg lg:text-[54px] leading-tight font-semibold font-roboto">
           <span className="hand-underline">Streamline the Process</span> with Automation and <span className="text-[#c4487a]">Enhance Efficiency</span>
         </h2>
       </header>
 
-
       <div className="mt-24">
-
-        <section className="load-animation reveal flex flex-wrap items-center mb-16 px-24 md:mb-24 xl:mb-32 max-w-3xl xl:max-w-none mx-auto">
-          <div className="relative flex items-center w-full xl:w-1/2 px-4">
-            <div className="relative px-4 md:px-12 xl:px-0" data-toggle="video-modal">
-              <img src="assets/images/product/dash.png" alt="" width="1226" height="864" className="cursor-play rounded-xl shadow-video order border-gray-200 border" />
-            </div>
+        <TemplateVPS image="assets/images/product/dash.png">
+          <div>
+            <h2 className="text-2xl leading-tight font-bold font-heading mt-2 mb-4"><Marker>Automate</Marker> Account Research</h2>
+            <p className="mb-6 md:text-md text-secondary ">
+              Sales preparation is a huge chunk of work that takes almost half of the time. With our platform, all you have to do is specify the company name and LinkedIn profile, and we will automate the preparation and research for you.
+            </p>
+            <RenderListCollection data={dataVPS.section1.list} />
           </div>
 
-          <div className="relative w-full xl:w-1/2 px-4 flex items-center mb-16 md:mb-24 xl:mb-0">
-            <div className="xl:pl-24">
-              <h2 className="text-2xl leading-tight font-bold font-heading mt-2 mb-4"><Marker>Automate</Marker> Account Research</h2>
-              <p className="mb-6 md:text-md text-secondary ">
-                Sales preparation is a huge chunk of work that takes almost half of the time. With our platform, all you have to do is specify the company name and LinkedIn profile, and we will automate the preparation and research for you.
-              </p>
-              <ul>
-                <li className="mb-3">
-                  <a href="/tailwind" className="flex">
-                    <div className="mr-2">
-                      <div className="w-6 h-6 flex items-center justify-center rounded-full text-brand-blue border-2 border-brand-blue">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                      </div>
-                    </div>
-                    <div>
-                      <p>
-                        CRM Data Collection
-                      </p>
-                    </div>
-                  </a>
-                </li>
-                <li className="mb-3">
-                  <a href="/bootstrap" className="flex">
-                    <div className="mr-2">
-                      <div className="w-6 h-6 flex items-center justify-center rounded-full text-brand-blue border-2 border-brand-blue">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                      </div>
-                    </div>
-                    <p>Personalized Content</p>
-                  </a>
-                </li>
-                <li className="mb-3">
-                  <a href="/material-ui" className="flex">
-                    <div className="mr-2">
-                      <div className="w-6 h-6 flex items-center justify-center rounded-full text-brand-blue border-2 border-brand-blue">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                      </div>
-                    </div>
-                    <p>Data Collection</p>
-                  </a>
-                </li>
-                <li className="mb-3">
-                  <a href="/material-ui" className="flex">
-                    <div className="mr-2">
-                      <div className="w-6 h-6 flex items-center justify-center rounded-full text-brand-blue border-2 border-brand-blue">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                      </div>
-                    </div>
-                    <p>Real-Time Engagement Monitoring</p>
-                  </a>
-                </li>
-              </ul>
-              <a className="block md:inline-block py-3 px-6 bg-brand-blue hover:bg-blue-700 text-sm text-white text-center font-semibold leading-none rounded-3xl" href="/editor">Try Demo</a>
-            </div>
-
-            <svg className="absolute bottom-[-70px] w-[140px]" xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" width="100%" viewBox="0 0 499 286" enable-background="new 0 0 499 286">
-              <path fill="#8D8587" opacity="1.000000" stroke="none" d=" M11.827987,258.938354   C19.697931,244.808960 27.304224,230.970352 35.269146,217.341309   C45.846481,199.242096 56.698055,181.303070 67.449417,163.305740   C68.472603,161.592972 69.541786,159.896561 70.725258,158.292664   C74.891594,152.646255 79.540596,151.215042 83.866539,154.165436   C89.645569,158.106888 90.797577,163.088974 86.850006,169.279602   C76.112129,186.118851 65.156525,202.819199 54.395119,219.643600   C50.998211,224.954315 47.917660,230.468887 44.758034,235.928192   C44.303349,236.713821 44.219509,237.714081 43.586811,239.945496   C182.949661,142.982132 326.961578,57.564217 488.966064,5.884090   C490.060303,7.819336 491.023956,9.523644 492.505035,12.143021   C484.291443,16.731203 476.611298,22.226442 468.090637,25.596800   C370.907837,64.037735 277.645050,110.346718 188.081772,164.157593   C142.263824,191.685654 97.797943,221.271103 54.163116,252.124466   C52.709965,253.151962 50.886086,253.655167 49.235016,254.402756   C49.869820,255.253464 50.504620,256.104187 51.139420,256.954895   C56.602459,256.238708 62.076332,255.596100 67.526726,254.793991   C95.487541,250.679169 123.441765,246.519547 151.401169,242.395142   C152.546844,242.226120 153.727448,242.143661 154.881577,242.206863   C161.535538,242.571274 165.646332,245.839249 165.854401,250.858200   C166.070984,256.082703 163.277740,258.838715 156.008102,259.813354   C134.913803,262.641418 113.769112,265.105713 92.699150,268.099457   C72.995049,270.899170 53.008419,272.128693 34.010578,279.065460   C29.170485,280.832764 23.595768,280.970581 18.348639,281.034027   C16.502993,281.056335 13.818002,279.022278 12.915716,277.224670   C10.071107,271.557495 9.626493,265.456635 11.827987,258.938354  z" />
-            </svg>
-          </div>
-
-
-        </section>
-
-
-
-
-        <section className="load-animation reveal flex flex-wrap items-center mb-16 px-24 md:mb-24 xl:mb-32 max-w-3xl xl:max-w-none mx-auto">
-
-          <div className="relative w-full xl:w-1/2 px-4 flex items-center mb-16 md:mb-24 xl:mb-0">
-            <div className="xl:pl-24">
-              <h2 className="text-2xl leading-tight font-bold font-heading mt-2 mb-4"><Marker>Collaborate</Marker> with Partners</h2>
-              <p className="mb-6 md:text-md text-secondary ">
-                Our new partner portal simplifies co-selling by enabling joint pursuit plans, co-branded documents, and AI-generated sales plays. Additionally, partners can selectively use relevant customer stories to enhance their co-selling efforts.
-              </p>
-              <ul>
-                <li className="mb-3">
-                  <a href="/tailwind" className="flex">
-                    <div className="mr-2">
-                      <div className="w-6 h-6 flex items-center justify-center rounded-full text-brand-blue border-2 border-brand-blue">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                      </div>
-                    </div>
-                    <p>Create and share Joint Pursuit Plans with partners.</p>
-                  </a>
-                </li>
-                <li className="mb-3">
-                  <a href="/bootstrap" className="flex">
-                    <div className="mr-2">
-                      <div className="w-6 h-6 flex items-center justify-center rounded-full text-brand-blue border-2 border-brand-blue">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                      </div>
-                    </div>
-                    <p>Generate co-branded documents in various brand combinations.</p>
-                  </a>
-                </li>
-                <li className="mb-3">
-                  <a href="/material-ui" className="flex">
-                    <div className="mr-2">
-                      <div className="w-6 h-6 flex items-center justify-center rounded-full text-brand-blue border-2 border-brand-blue">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                      </div>
-                    </div>
-                    <p>Use AI to apply the best sales play and generate account-specific points of view.</p>
-                  </a>
-                </li>
-                <li className="mb-6">
-                  <a href="/bulma" className="flex">
-                    <div className="mr-2">
-                      <div className="w-6 h-6 flex items-center justify-center rounded-full text-brand-blue border-2 border-brand-blue">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                      </div>
-                    </div>
-                    <p>Tag partners to selectively use relevant customer stories in co-selling.</p>
-                  </a>
-                </li>
-              </ul>
-              <a className="block md:inline-block py-3 px-6 bg-brand-blue hover:bg-blue-700 text-sm text-white text-center font-semibold leading-none rounded-3xl" href="/editor">Try Demo</a>
-            </div>
-
-            {/* <svg className="absolute bottom-[-70px] w-[140px]" xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" width="100%" viewBox="0 0 499 286" enable-background="new 0 0 499 286">
+          <svg className="absolute bottom-[-120px] left-[-40px] w-[140px]" xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" width="100%" viewBox="0 0 499 286" enable-background="new 0 0 499 286">
             <path fill="#8D8587" opacity="1.000000" stroke="none" d=" M11.827987,258.938354   C19.697931,244.808960 27.304224,230.970352 35.269146,217.341309   C45.846481,199.242096 56.698055,181.303070 67.449417,163.305740   C68.472603,161.592972 69.541786,159.896561 70.725258,158.292664   C74.891594,152.646255 79.540596,151.215042 83.866539,154.165436   C89.645569,158.106888 90.797577,163.088974 86.850006,169.279602   C76.112129,186.118851 65.156525,202.819199 54.395119,219.643600   C50.998211,224.954315 47.917660,230.468887 44.758034,235.928192   C44.303349,236.713821 44.219509,237.714081 43.586811,239.945496   C182.949661,142.982132 326.961578,57.564217 488.966064,5.884090   C490.060303,7.819336 491.023956,9.523644 492.505035,12.143021   C484.291443,16.731203 476.611298,22.226442 468.090637,25.596800   C370.907837,64.037735 277.645050,110.346718 188.081772,164.157593   C142.263824,191.685654 97.797943,221.271103 54.163116,252.124466   C52.709965,253.151962 50.886086,253.655167 49.235016,254.402756   C49.869820,255.253464 50.504620,256.104187 51.139420,256.954895   C56.602459,256.238708 62.076332,255.596100 67.526726,254.793991   C95.487541,250.679169 123.441765,246.519547 151.401169,242.395142   C152.546844,242.226120 153.727448,242.143661 154.881577,242.206863   C161.535538,242.571274 165.646332,245.839249 165.854401,250.858200   C166.070984,256.082703 163.277740,258.838715 156.008102,259.813354   C134.913803,262.641418 113.769112,265.105713 92.699150,268.099457   C72.995049,270.899170 53.008419,272.128693 34.010578,279.065460   C29.170485,280.832764 23.595768,280.970581 18.348639,281.034027   C16.502993,281.056335 13.818002,279.022278 12.915716,277.224670   C10.071107,271.557495 9.626493,265.456635 11.827987,258.938354  z" />
-          </svg> */}
-            <svg className="absolute bottom-[-70px] right-0 w-[140px]" xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" width="100%" viewBox="0 0 469 392" enable-background="new 0 0 469 392">
-              <path fill="#8D8587" opacity="1.000000" stroke="none" d=" M34.531731,1.000000   C35.812492,1.617045 36.582073,2.705378 37.443607,2.783819   C92.153770,7.765119 143.674988,23.756807 192.183823,49.065807   C251.775375,80.157097 307.313690,117.156853 354.449921,165.664139   C385.870972,197.999130 411.351746,234.656891 432.588165,274.345215   C433.910187,276.815948 435.553680,279.114685 437.814758,282.714844   C438.856384,279.500641 439.638306,278.019897 439.783936,276.478973   C440.455353,269.374939 444.708527,264.663116 450.075287,260.693573   C456.393341,256.020416 460.620605,256.629089 465.309937,262.936890   C466.874146,265.040924 468.099396,267.396881 469.739807,269.318848   C470.000000,303.020905 470.000000,337.041779 469.850281,371.096252   C469.391541,371.234619 468.878479,371.260254 468.802673,371.455597   C464.719940,381.973114 457.050201,388.412231 446.307129,391.441376   C446.076599,391.506378 446.096771,392.460602 446.000000,393.000000   C442.307098,393.000000 438.614166,393.000000 434.460632,393.000000   C433.578857,392.357025 433.303223,391.380280 432.713806,391.123291   C427.435486,388.822021 424.075562,385.472260 423.849579,379.156006   C423.624390,372.861755 419.450226,368.608795 414.667206,364.971558   C397.965088,352.270569 381.271606,339.558228 364.589447,326.831116   C354.400970,319.058105 353.301544,311.744324 361.031738,300.674469   C383.013306,315.152496 405.015289,329.643951 427.017273,344.135437   C427.550873,343.909485 428.084442,343.683533 428.618042,343.457581   C426.485840,333.522766 424.928772,323.421906 422.116791,313.683350   C412.560242,280.586792 394.806061,251.699371 374.799652,224.092911   C334.050903,167.864609 281.929047,124.473160 222.466583,89.346069   C174.971634,61.288723 124.721313,40.288364 70.435944,29.655333   C56.581875,26.941694 42.405846,25.820162 28.610571,22.876116   C19.439495,20.918915 10.681825,17.024557 1.369556,13.998642   C1.000000,11.629442 1.000000,9.258885 1.270869,6.816576   C5.615224,5.464774 9.709955,4.246359 13.745227,2.855444   C14.607549,2.558211 15.254066,1.634891 16.000000,1.000000   C22.021152,1.000000 28.042305,1.000000 34.531731,1.000000  z" />
-              <path fill="#050505" opacity="1.000000" stroke="none" d=" M15.527336,1.000000   C15.254066,1.634891 14.607549,2.558211 13.745227,2.855444   C9.709955,4.246359 5.615224,5.464774 1.270869,6.372413   C1.000000,4.371395 1.000000,2.742790 1.000000,1.000000   C5.684506,1.000000 10.369590,1.000000 15.527336,1.000000  z" />
-            </svg>
+          </svg>
+        </TemplateVPS>
+
+        <TemplateVPS image="assets/images/product/partners.png" reverse={true}>
+          <div>
+            <h2 className="text-2xl leading-tight font-bold font-heading mt-2 mb-4"><Marker>Collaborate</Marker> with Partners</h2>
+            <p className="mb-6 md:text-md text-secondary ">
+              Our new partner portal simplifies co-selling by enabling joint pursuit plans, co-branded documents, and AI-generated sales plays. Additionally, partners can selectively use relevant customer stories to enhance their co-selling efforts.
+            </p>
+            <RenderListCollection data={dataVPS.section1.list} />
           </div>
 
-          <div className="relative flex items-center w-full xl:w-1/2 px-4">
-            <div className="relative px-4 md:px-12 xl:px-0" data-toggle="video-modal">
-              <img src="assets/images/product/partners.png" alt="" width="1226" height="864" className="cursor-play rounded-xl shadow-video order border-gray-200 border" />
-            </div>
+          <svg className="absolute bottom-[-120px] right-0 w-[140px]" xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" width="100%" viewBox="0 0 469 392" enable-background="new 0 0 469 392">
+            <path fill="#8D8587" opacity="1.000000" stroke="none" d=" M34.531731,1.000000   C35.812492,1.617045 36.582073,2.705378 37.443607,2.783819   C92.153770,7.765119 143.674988,23.756807 192.183823,49.065807   C251.775375,80.157097 307.313690,117.156853 354.449921,165.664139   C385.870972,197.999130 411.351746,234.656891 432.588165,274.345215   C433.910187,276.815948 435.553680,279.114685 437.814758,282.714844   C438.856384,279.500641 439.638306,278.019897 439.783936,276.478973   C440.455353,269.374939 444.708527,264.663116 450.075287,260.693573   C456.393341,256.020416 460.620605,256.629089 465.309937,262.936890   C466.874146,265.040924 468.099396,267.396881 469.739807,269.318848   C470.000000,303.020905 470.000000,337.041779 469.850281,371.096252   C469.391541,371.234619 468.878479,371.260254 468.802673,371.455597   C464.719940,381.973114 457.050201,388.412231 446.307129,391.441376   C446.076599,391.506378 446.096771,392.460602 446.000000,393.000000   C442.307098,393.000000 438.614166,393.000000 434.460632,393.000000   C433.578857,392.357025 433.303223,391.380280 432.713806,391.123291   C427.435486,388.822021 424.075562,385.472260 423.849579,379.156006   C423.624390,372.861755 419.450226,368.608795 414.667206,364.971558   C397.965088,352.270569 381.271606,339.558228 364.589447,326.831116   C354.400970,319.058105 353.301544,311.744324 361.031738,300.674469   C383.013306,315.152496 405.015289,329.643951 427.017273,344.135437   C427.550873,343.909485 428.084442,343.683533 428.618042,343.457581   C426.485840,333.522766 424.928772,323.421906 422.116791,313.683350   C412.560242,280.586792 394.806061,251.699371 374.799652,224.092911   C334.050903,167.864609 281.929047,124.473160 222.466583,89.346069   C174.971634,61.288723 124.721313,40.288364 70.435944,29.655333   C56.581875,26.941694 42.405846,25.820162 28.610571,22.876116   C19.439495,20.918915 10.681825,17.024557 1.369556,13.998642   C1.000000,11.629442 1.000000,9.258885 1.270869,6.816576   C5.615224,5.464774 9.709955,4.246359 13.745227,2.855444   C14.607549,2.558211 15.254066,1.634891 16.000000,1.000000   C22.021152,1.000000 28.042305,1.000000 34.531731,1.000000  z" />
+            <path fill="#050505" opacity="1.000000" stroke="none" d=" M15.527336,1.000000   C15.254066,1.634891 14.607549,2.558211 13.745227,2.855444   C9.709955,4.246359 5.615224,5.464774 1.270869,6.372413   C1.000000,4.371395 1.000000,2.742790 1.000000,1.000000   C5.684506,1.000000 10.369590,1.000000 15.527336,1.000000  z" />
+          </svg>
+        </TemplateVPS>
+
+        <TemplateVPS image="assets/images/product/persona.png">
+          <div>
+            <h2 className="text-2xl leading-tight font-bold font-heading mt-2 mb-4">Close <Marker>more</Marker> deals faster</h2>
+            <p className="mb-6 md:text-md text-secondary ">SalesPlay X empowers Account Executives to close more deals, build stronger relationships, and optimize their time using AI-driven insights and personalized sales materials. It offers research on top accounts, AI-created prospecting sequences, and high-quality value cases to support deal approvals.</p>
+            <RenderListCollection data={dataVPS.section1.list} />
           </div>
-        </section>
-
-
-
-        <section className="load-animation reveal flex flex-wrap items-center mb-16 px-24 md:mb-24 xl:mb-24 max-w-3xl xl:max-w-none mx-auto">
-          <div className="relative flex items-center w-full xl:w-1/2 px-4">
-            <div className="relative px-4 md:px-12 xl:px-0" data-toggle="video-modal">
-              <img src="assets/images/product/persona.png" alt="" width="1226" height="864" className="border border-gray-200 cursor-play rounded-xl shadow-video" />
-            </div>
-          </div>
-
-          <div className="relative w-full xl:w-1/2 px-4 flex items-center mb-16 md:mb-24 xl:mb-0">
-            <div className="xl:pl-24">
-              <h2 className="text-2xl leading-tight font-bold font-heading mt-2 mb-4">Close <Marker>more</Marker> deals faster</h2>
-              <p className="mb-6 md:text-md text-secondary ">SalesPlay X empowers Account Executives to close more deals, build stronger relationships, and optimize their time using AI-driven insights and personalized sales materials. It offers research on top accounts, AI-created prospecting sequences, and high-quality value cases to support deal approvals.</p>
-              <ul>
-                <li className="mb-3">
-                  <a href="/tailwind" className="flex">
-                    <div className="mr-2">
-                      <div className="w-6 h-6 flex items-center justify-center rounded-full text-brand-blue border-2 border-brand-blue">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                      </div>
-                    </div>
-                    <p>Upload top 50 accounts for industry news and AI-generated points of view.</p>
-                  </a>
-                </li>
-                <li className="mb-3">
-                  <a href="/bootstrap" className="flex">
-                    <div className="mr-2">
-                      <div className="w-6 h-6 flex items-center justify-center rounded-full text-brand-blue border-2 border-brand-blue">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                      </div>
-                    </div>
-                    <p>Find key contacts and their information within accounts.</p>
-                  </a>
-                </li>
-                <li className="mb-3">
-                  <a href="/material-ui" className="flex">
-                    <div className="mr-2">
-                      <div className="w-6 h-6 flex items-center justify-center rounded-full text-brand-blue border-2 border-brand-blue">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                      </div>
-                    </div>
-                    <p>AI creates prospecting sequences and lead generation materials.</p>
-                  </a>
-                </li>
-                <li className="mb-6">
-                  <a href="/bulma" className="flex">
-                    <div className="mr-2">
-                      <div className="w-6 h-6 flex items-center justify-center rounded-full text-brand-blue border-2 border-brand-blue">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                      </div>
-                    </div>
-                    <p>Generate value cases and proposals to aid deal approvals.</p>
-                  </a>
-                </li>
-              </ul>
-              <a className="block md:inline-block py-3 px-6 bg-brand-blue hover:bg-blue-700 text-sm text-white text-center font-semibold leading-none rounded-3xl" href="/editor">Try Demo</a>
-            </div>
-          </div>
-
-
-        </section>
-
-
+        </TemplateVPS>
       </div>
 
-      <svg className="mx-auto mt-28 -mb-8" width="54px" height="288px" viewBox="0 0 54 288" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><polygon id="path-1" points="0.430196335 0.948688355 2.537 0.948688355 2.537 9.74376852 0.430196335 9.74376852"></polygon></defs> <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-451.000000, -5965.000000)"><g transform="translate(451.000000, 5965.000000)"><g id="Group-3" transform="translate(51.000000, 14.000000)"><mask id="mask-2" fill="white"><use></use></mask> <path d="M1.2775,9.46333333 C1.0675,7.89666667 0.8065,6.59888889 0.6815,5.29555556 C0.5635,4.07888889 0.4095,2.85333333 0.4325,1.63333333 C0.4345,1.39111111 1.1285,0.937777778 1.4855,0.948888889 C1.8515,0.96 2.4955,1.42 2.5045,1.71333333 C2.5305,2.82 2.5575,3.92777778 2.5145,5.03333333 L2.3355,8.34555556 C2.3105,8.73 2.3815,9.13888889 2.2565,9.48777778 C2.2035,9.64333333 1.8355,9.76333333 1.6265,9.74111111 C1.4505,9.72333333 1.2975,9.48111111 1.2775,9.46333333" fill="#010202" mask="url(#mask-2)"></path></g> <path d="M52.5055461,30.0088203 C53.085113,30.3827075 53.0004006,31.0812555 52.989497,31.6801783 C52.9836259,32.9635844 52.7353599,34.2305816 52.5332244,35.483514 C52.391478,36.3438063 52.1012752,37.1689368 52.0492736,38.0268849 C51.9972719,38.6656578 51.7599095,38.9387479 51.2130534,38.999695 C51.144277,39.0078994 50.9983369,38.8484992 51,38.7723153 C51.0570484,36.7141774 51.2449254,34.8330206 51.2424092,32.7854312 C51.2256344,32.3752101 51.1644067,31.9673331 51.1233086,31.5594561 C51.0394349,30.7437021 51.650035,29.9045069 52.5055461,30.0088203" fill="#010202"></path> <path d="M51.7264858,7.69728647 C51.4001688,6.52434956 51.0451889,4.53717204 50.7442276,3.73130102 C50.4851584,2.93977784 50.1312809,2.16977644 50.0078096,1.35792715 C49.9471764,0.957382941 50.2514449,0.428903721 50.5105141,0.0415117137 C50.590991,-0.0780537206 51.0705446,0.0941205048 51.3670962,0.13955537 C52.6205502,0.334447028 52.3890415,1.47868823 52.559917,2.36945072 C52.6503156,2.84292984 52.7164609,3.73369233 52.7815038,4.61967219 C52.8090644,5.51282599 52.842137,6.40119717 52.9303308,6.87467629 C53.1375862,7.98424352 52.9093848,8.15522209 51.8797225,7.89098248 C51.7342028,7.85391719 51.6449066,7.58011235 51.7264858,7.69728647" fill="#010202"></path> <path d="M42,67.3809873 C42.4002786,65.7319254 42.7354176,64.35018 43.0733887,62.9623314 C43.3953109,61.6782359 43.8078622,60.4368621 44.2572317,59.2308864 C44.3440846,58.9904236 45.0927189,58.9135244 45.3929279,59.1173684 C45.6988012,59.326095 46.0811428,60.1329269 45.9848494,60.430759 C45.6034518,61.5427467 45.1540824,62.6144538 44.7179297,63.6922641 L44.051428,65.296163 L43.3245069,66.8597813 C43.1574095,67.223527 43.043179,67.6519657 42.8175502,67.9363709 C42.7174806,68.0633157 42.3644046,67.9827546 42.1954191,67.848486 C42.053811,67.7349681 42.0113286,67.4090617 42,67.3809873" fill="#010202"></path> <path d="M39.7687591,73.3259208 C40.2404988,74.0582677 39.8818606,74.6400159 39.6488908,75.1865434 C39.1510507,76.3585412 38.4473078,77.3811549 37.7889988,78.4219862 C37.3269259,79.1239704 36.719851,79.699646 36.351546,80.458712 C36.0760422,81.0246716 35.7357709,81.1327626 35.1470629,80.8485683 C35.0735953,80.8133477 34.9769273,80.571661 35.004961,80.5012197 C35.7841049,78.5932315 36.7150176,77.0083017 37.4274606,75.0711653 C37.5714959,74.6873816 37.655597,74.2671626 37.7677319,73.8663758 C37.9881349,73.0599441 38.9335477,72.6822329 39.7687591,73.3259208" fill="#010202"></path> <path d="M48.022191,52.2803497 C48.2239451,51.1139727 48.5624982,49.1719549 48.6746932,48.3461599 C48.7721256,47.5366942 48.7947614,46.7050673 48.9630538,45.9270938 C49.0526129,45.5456885 49.4807252,45.2261012 49.823215,45.0079887 C49.9285207,44.9403388 50.256248,45.3194114 50.4776854,45.5013662 C51.4067382,46.2630104 50.8565894,47.168119 50.6420412,48.0184079 C50.421588,48.928182 49.4885985,51.2189466 49.295702,52.1298871 C49.0378504,53.1912902 48.7908248,53.2321134 48.0704152,52.5206234 C47.9680619,52.420315 48.0015236,52.1403845 48.022191,52.2803497" fill="#010202"></path> <path d="M19,104.329623 C19.5749564,102.817011 20.0403512,101.527457 20.6172467,100.312256 C21.1505116,99.174893 21.7613422,98.080515 22.4574951,97.0883718 C22.5980831,96.8908725 23.3650149,97.0477102 23.620982,97.3288561 C23.881797,97.6169726 24.103829,98.4662193 23.9486975,98.7032184 C22.7949063,100.50627 21.5490058,102.226837 20.3942451,104.029889 C20.1916045,104.342402 20.0335642,104.719974 19.7882624,104.960459 C19.6787007,105.065017 19.3248067,104.945356 19.1628882,104.797812 C19.0261785,104.672342 19.0087262,104.357505 19,104.329623" fill="#010202"></path> <path d="M16.7295775,109.295594 C17.2564007,109.976659 16.8929252,110.536852 16.6506082,111.055205 C16.1162126,112.151184 15.4747216,113.201836 14.8299853,114.243191 C14.403767,114.962609 13.7557853,115.565804 13.472361,116.353794 C13.2549247,116.937231 12.9001034,117.097618 12.2077691,116.946529 C12.1212273,116.926771 11.9805969,116.716408 12.0022323,116.64435 C12.5496092,114.651132 13.5145501,113.046098 14.151714,111.080774 C14.2771996,110.687941 14.3821315,110.29046 14.4935541,109.891816 C14.7272169,109.093367 15.781945,108.681939 16.7295775,109.295594" fill="#010202"></path> <path d="M27.0467598,90.9894261 C27.5864814,89.9430314 28.6185805,88.3067229 28.9962804,87.5681602 C29.3645115,86.8483249 29.6654089,86.066455 30.1293801,85.4390864 C30.3587354,85.1289134 30.8995091,85.0364468 31.3150842,85.0001624 C31.443439,84.9896282 31.6243983,85.4940982 31.7758991,85.7656458 C32.4166212,86.9115299 31.5286582,87.4464319 31.0436453,88.1463693 C30.531278,88.8919548 28.8468838,90.5961502 28.363975,91.3616336 C27.7979512,92.2593794 27.5359811,92.2031971 27.024666,91.2375644 C26.9510197,91.1017906 27.0678016,90.8466295 27.0467598,90.9894261" fill="#010202"></path> <path d="M3,145.605222 C3.10328982,143.949197 3.11620104,142.531909 3.29497188,141.1449 C3.47473589,139.855716 3.71806286,138.560709 4.07461136,137.32626 C4.14214701,137.075876 4.93171821,136.902354 5.26145108,137.060737 C5.59416347,137.220283 6.06095399,137.923687 5.99341834,138.211337 C5.44816729,140.389091 4.77181762,142.524922 4.24643,144.717816 C4.14909921,145.098632 4.12129041,145.521372 3.94847861,145.848618 C3.87299759,145.99419 3.49459931,146.036115 3.29397871,145.968569 C3.12513959,145.91267 3.01589074,145.628513 3,145.605222" fill="#010202"></path> <path d="M2.54444417,152.032105 C3.11669809,152.466956 3.00207623,153.136227 2.96614997,153.719935 C2.88745436,154.96471 2.6342598,156.191902 2.46745933,157.429644 C2.3442836,158.274731 2.05601817,159.099892 2.03121195,159.946151 C2.0081165,160.579087 1.79769129,160.870941 1.24767743,160.998701 C1.17924647,161.01511 1.01928909,160.872113 1.01501216,160.794755 C0.945725806,158.717786 1.13904328,156.813117 1.13391095,154.724428 C1.13476634,154.308331 1.0911416,153.891062 1.06719076,153.473793 C1.02099987,152.629878 1.68221404,151.828159 2.54444417,152.032105" fill="#010202"></path> <path d="M8.01993684,130.233 C8.17985983,129.014344 8.66908663,127.082619 8.81869201,126.233614 C8.96829739,125.409649 9.03536187,124.529641 9.29588159,123.770068 C9.42743115,123.396839 9.84357485,123.1512 10.1685796,123.00334 C10.2683166,122.956835 10.499603,123.407571 10.6681241,123.632939 C11.3757403,124.5833 10.7661414,125.333334 10.5400137,126.170415 C10.300989,127.052808 9.30104039,129.215863 9.12306158,130.136414 C8.8943545,131.200055 8.67768464,131.239405 8.05948769,130.483409 C7.97092818,130.377283 8.00274082,130.086332 8.01993684,130.233" fill="#010202"></path> <path d="M3.11361343,190.846274 C2.55400958,189.33135 2.01898293,188.056667 1.68246441,186.701516 C1.32420451,185.448992 1.12191529,184.132326 1.00091986,182.822657 C0.972561559,182.560257 1.60684227,182.014464 1.94241552,182.00047 C2.28838681,181.984143 2.91794114,182.396986 2.96047859,182.687375 C3.22515608,184.911363 3.40664922,187.16334 3.81311823,189.364004 C3.8792876,189.748857 4.01635273,190.131379 3.99839247,190.515066 C3.9974472,190.68067 3.7044114,190.93374 3.51157494,190.992052 C3.34804206,191.039867 3.13630007,190.85677 3.11361343,190.846274" fill="#010202"></path> <path d="M4.93413212,196.009233 C5.69778336,195.916983 5.90751149,196.534705 6.15236155,197.02748 C6.40925343,197.555287 6.6912324,198.063243 6.91902324,198.614405 C7.1518315,199.160895 7.36758054,199.724901 7.64755254,200.235193 C8.02285552,200.935822 8.18943384,201.847807 8.71927333,202.404807 C9.09457631,202.838029 9.08955889,203.246729 8.72830469,203.89014 C8.68314791,203.970712 8.46840236,204.032601 8.41822817,203.981222 C8.07604016,203.641417 7.75291835,203.288767 7.4388279,202.929111 C7.13176183,202.562448 6.8778804,202.154916 6.60091885,201.764899 C6.32897472,201.369044 6.05502362,200.973188 5.78006903,200.572662 C5.52719109,200.155788 5.26327483,199.740082 4.97627844,199.324375 C4.75250154,198.990409 4.46550514,198.703151 4.23269688,198.373855 C3.76708036,197.703587 3.99988862,196.504344 4.93413212,196.009233" fill="#010202"></path> <path d="M0.528797108,174.604834 C0.377388938,173.423664 0.304454515,171.439622 0.205669917,170.597417 C0.103192437,169.778349 -0.0389835269,168.951182 0.00994716192,168.137899 C0.0330276755,167.735306 0.377388938,167.310733 0.658047984,167.016886 C0.743907494,166.92665 1.10396351,167.221653 1.33661508,167.344282 C2.31984496,167.857935 1.92562979,168.833181 1.9034725,169.699681 C1.90901182,170.613613 1.57203632,173.056934 1.61173481,173.976651 C1.66805126,175.046761 1.47971427,175.186743 0.640506793,174.811915 C0.522334564,174.758699 0.470634213,174.481048 0.528797108,174.604834" fill="#010202"></path> <path d="M32.8877207,210.077461 C31.5931663,210.939786 30.4566376,211.617834 29.248945,212.135229 C28.679634,212.346676 28.0998579,212.554579 27.5085699,212.711687 C26.9120493,212.836902 26.3123891,212.959754 25.7074962,212.999917 C25.4605158,213.009367 24.9948111,212.212011 25,211.789118 C25.0063229,211.355592 25.3924915,210.578318 25.6478442,210.557056 C27.6048504,210.312533 29.5786011,209.947522 31.5146768,209.327356 C31.8547982,209.22813 32.1823612,209.024952 32.5182965,209.000145 C32.66795,208.991876 32.9191165,209.339169 32.9871408,209.575422 C33.0436533,209.775056 32.8960929,210.047929 32.8877207,210.077461" fill="#010202"></path> <path d="M37.0225184,207.044054 C36.8816242,206.194574 37.4314295,205.912556 37.8498748,205.575732 C38.7492674,204.888384 39.7694264,204.317497 40.7069558,203.706648 C41.3393908,203.285333 42.0809395,202.982763 42.5375215,202.384473 C42.8648623,201.93804 43.2049153,201.898077 43.8479439,202.173245 C43.9295143,202.207498 44.0290936,202.441562 43.9920162,202.510068 C42.9856288,204.359743 41.4135457,205.420451 40.0183749,206.782588 L39.2058495,207.660612 C38.6560441,208.262327 37.5500773,208.068225 37.0225184,207.044054" fill="#010202"></path> <path d="M19.4342478,211.974625 C18.3164862,211.921607 16.5280675,211.31881 15.7730511,211.046802 L14.6247092,210.728691 C14.2588004,210.582314 13.9013275,210.402512 13.570217,210.17776 C13.2433244,209.95416 13.0777692,209.368652 13.0007912,208.927216 C12.9786469,208.792364 13.4268061,208.546866 13.6556309,208.349775 C14.6268181,207.508395 15.1161025,208.403946 15.8089038,208.75894 C16.1758671,208.926063 16.8075079,209.334075 17.4518026,209.745544 C18.1108602,210.109758 18.8036615,210.424411 19.1969871,210.524685 C20.1291582,210.688351 20.2071906,210.97419 19.6504187,211.892792 C19.5702773,212.021881 19.3066543,212.013813 19.4342478,211.974625" fill="#010202"></path> <path d="M26.1116617,186.846912 C27.4625977,186.309461 28.6716547,186.014275 29.9362295,186.000163 C31.1113588,185.994282 32.3471466,186.147168 33.5253603,186.577599 C33.7690223,186.65757 34.0712865,187.607811 33.9849253,188.021778 C33.8995922,188.43692 33.4112401,189.066103 33.1799154,188.994364 C31.3827798,188.443977 29.4931143,187.930047 27.548959,187.972384 C27.2096828,187.960624 26.8889126,188.09822 26.5434677,188.032362 C26.3902794,188.001785 26.1065211,187.57253 26.0201599,187.309097 C25.9440798,187.077417 26.1075492,186.881018 26.1116617,186.846912" fill="#010202"></path> <path d="M21.842508,190.683514 C22.1951887,191.646806 21.8707589,192.116411 21.6903177,192.642609 L21.6110329,192.860554 C21.2483277,193.881643 20.8901791,194.859384 20.6222512,195.90576 C20.4336081,196.665557 20.085484,197.349494 20.0599671,198.209232 C20.039918,198.843801 19.8075316,199.044888 19.2361342,198.991907 C19.1650513,198.985886 19.0073931,198.782391 19.0064817,198.698103 C18.9782308,197.568643 19.0429345,196.487348 19.1887456,195.425318 C19.3227096,194.359677 19.5058848,193.30126 19.7437392,192.179025 C19.8321372,191.758789 19.9059541,191.318083 20.0052879,190.889418 L20.0253369,190.807538 C20.2713932,189.902044 21.1453486,189.621485 21.842508,190.683514" fill="#010202"></path> <path d="M39.747594,191.030006 C40.7745586,191.369128 42.356002,192.332667 43.017072,192.813898 C43.6740424,193.2413 44.3884079,193.718225 44.8537192,194.457835 C45.0996987,194.81203 44.9900329,195.452594 44.8547441,195.848776 C44.8096479,195.971506 44.3258881,195.9166 44.0481362,195.968276 C42.92073,196.167443 42.8643597,195.38477 42.3498525,194.84971 C42.103873,194.577335 41.6426614,194.047658 41.1209798,193.541666 C40.5921238,193.048592 40.0099722,192.587816 39.6492022,192.414487 C38.8149217,192.008617 38.7964732,191.743778 39.5262125,191.050461 C39.6297289,190.952492 39.8757084,191.026776 39.747594,191.030006" fill="#010202"></path> <path d="M19.9671855,228.803968 C19.4010539,227.267098 18.9948465,225.956205 18.647278,224.617641 C18.349819,223.364394 18.044897,222.088089 18.0001182,220.791031 C17.9894566,220.531619 18.7027184,220.009337 19.0844041,220.000114 C19.4746191,219.992043 20.1814839,220.415172 20.2070718,220.709172 C20.4501565,222.937806 20.6399332,225.180276 20.8478346,227.427357 C20.9000765,227.817051 21.0344128,228.212509 20.9917664,228.588368 C20.9725755,228.755544 20.61861,228.967685 20.3957823,228.997662 C20.2092041,229.02418 19.9927734,228.81665 19.9671855,228.803968" fill="#010202"></path> <path d="M21.1408821,235 C21.843724,235.100585 21.9306544,235.78363 22.0693732,236.343867 C22.3708554,237.538026 22.4735073,238.810548 22.6492177,240.056169 C22.7685159,240.907636 22.7167276,241.821091 22.9359032,242.623435 C23.0995914,243.224608 22.9562487,243.603557 22.4309669,243.982507 C22.3643818,244.03046 22.1646268,243.971981 22.1405822,243.901805 C21.4932279,241.9977 21.1353334,240.145058 20.5342187,238.212884 C20.4112213,237.829256 20.2419844,237.46785 20.0949425,237.095918 C19.7962347,236.345037 20.2179398,235.264329 21.1408821,235" fill="#010202"></path> <path d="M17.5665519,212.618631 C17.41508,211.439321 17.204497,209.451044 17.1804832,208.6062 C17.1121361,207.78566 16.9625113,206.952389 17.0086918,206.133006 C17.0317821,205.727943 17.3753648,205.304364 17.6552184,205.016191 C17.7411141,204.927078 18.1013218,205.229138 18.3340713,205.354129 C19.3177154,205.883024 18.9270286,206.844758 18.9057856,207.708119 C18.904862,208.162946 18.7672442,208.99506 18.7053623,209.83296 C18.6536402,210.67086 18.6056125,211.512232 18.6388625,211.968217 C18.7173693,213.037581 18.5132516,213.183403 17.6783087,212.823477 C17.5600866,212.772554 17.5083645,212.495955 17.5665519,212.618631" fill="#010202"></path> <path d="M29.1316429,272.812136 C28.6414639,271.270233 28.2263492,269.992322 27.8365574,268.689881 C27.4883675,267.471544 27.1890146,266.221669 27.001806,264.951935 C26.964726,264.699623 27.5073596,264.075853 27.8266091,264.009271 C28.153998,263.940353 28.7979232,264.268591 28.8512822,264.565291 C29.2555443,266.816236 29.5865508,269.084702 29.85425,271.375363 C29.9039914,271.772519 30.0251796,272.175517 29.9953348,272.562161 C29.9817689,272.733873 29.6851292,272.959318 29.4979206,272.996697 C29.3387481,273.028236 29.1533483,272.823817 29.1316429,272.812136" fill="#010202"></path> <path d="M30.4554243,279 C31.295683,279.140804 31.3682153,279.830975 31.5110481,280.399962 C31.8391173,281.612955 31.8380014,282.904429 31.9127655,284.16705 C31.9596325,285.032649 31.7933661,285.924793 31.9652119,286.75346 C32.0924224,287.374383 31.8781731,287.721776 31.1997172,287.992997 C31.1160261,288.026467 30.8850387,287.932983 30.862721,287.860272 C30.2958533,285.902864 30.1173122,284.041249 29.5593715,282.103461 C29.4399722,281.717981 29.2480406,281.35443 29.0895855,280.982799 C28.7682116,280.236076 29.3317317,279.21236 30.4554243,279" fill="#010202"></path> <path d="M25.9456854,256.79222 C25.5592576,255.636548 25.049621,253.650314 24.7761347,252.833247 C24.511049,252.038263 24.1656909,251.270269 24.01448,250.434799 C23.939808,250.022585 24.1684911,249.459471 24.3673053,249.049711 C24.4279764,248.923348 24.8461397,249.074247 25.100958,249.103691 C26.1743685,249.228828 26.033425,250.385726 26.2285057,251.276403 C26.4338538,252.22106 26.6392019,254.859966 26.8781524,255.791129 C27.1572391,256.881778 26.9817598,257.091566 26.0922293,256.968883 C25.9662202,256.951708 25.8644796,256.684259 25.9456854,256.79222" fill="#010202"></path></g></g></g></svg>
+      <IconArrows />
 
-
-    </section>
+    </Section>
   )
 }
 

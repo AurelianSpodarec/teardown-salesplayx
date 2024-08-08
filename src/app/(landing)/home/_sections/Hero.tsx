@@ -20,7 +20,7 @@ function HomeSectionHero() {
           </p>
           <div className="space-x-4">
             <Button>Schedule a demo</Button>
-            <Button kind="outline" className="hidden lg:block">Contact Sales</Button>
+            <Button kind="outline" className="hidden lg:inline-block">Contact Sales</Button>
           </div>
         </Container>
 
