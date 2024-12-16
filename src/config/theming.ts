@@ -6,6 +6,8 @@ export const theming = plugin(
     addBase({
       ':root': {
 
+        'brand': "",
+
         // "--roboto": var('--font-roboto'),
         // "--montserrat": var('--font-montserrat'),
 
@@ -32,7 +34,7 @@ export const theming = plugin(
         // =============================================================
         // Component: Button
         // =============================================================
-        '--button-primary': "#be185d",
+        '--button-primary': "var(--brand)",
         '--button-secondary': "#aaaaaa",
         '--button-border-radius': `${theme('borderRadius.2xl')}`,
         '--button-border-color': "#221110",
@@ -78,7 +80,10 @@ export const theming = plugin(
         // =============================================================
         // Named Colors
         // =============================================================
-        '--primary': '240 4.8% 95.9%',
+        '--brand': "#c4487a",
+
+
+        '--primary': "var(--brand)",
         '--primary-50': theme('colors.gulfStream.100'),
         '--primary-250': theme('colors.gulfStream.150'),
         '--primary-500': theme('colors.gulfStream.450'),

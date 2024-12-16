@@ -5,7 +5,7 @@ import Link from "next/link"
 
 function HomeSectionHero() {
   return (
-    <Section id="hero" size="clean" className="pt-12 lg:pt-24 pb-80 mb-[180px]">
+    <Section id="hero" size="clean" className="pt-12 lg:pt-24 pb-[430px] mb-[180px]">
 
       {/* #880323 */}
       <Container size="max-w-5xl" className="mb-12 text-center">
@@ -31,7 +31,7 @@ function HomeSectionHero() {
 
       <div className="absolute w-full z-10">
         <div className="mx-auto max-w-5xl px-4">
-          <img src="/assets/images/autosite-new-modal.png" className="relative z-10 mx-auto max-w-full rounded shadow-lg" />
+          <img src="/assets/images/product/hero.jpg" className="relative z-10 mx-auto max-w-full rounded shadow-lg max-h-[600px]" />
 
           <div className="hidden lg:block w-[350px] opacity-10 absolute right-0 top-0 rotate-90">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" width="100%" viewBox="0 0 1584 270" enable-background="new 0 0 1584 270">

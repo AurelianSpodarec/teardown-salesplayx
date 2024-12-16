@@ -16,7 +16,7 @@ function MenuDesktop() {
         <img className="max-w-[205px]" src="/assets/images/logo.png" />
         <span className="sr-only">SalesPlayX</span>
       </Link>
-      <div className="md:ml-auto md:mr-auto flex flex-wrap align-center items-center text-base justify-center space-x-4">
+      <div className="md:ml-auto md:mr-auto flex flex-wrap align-center items-center text-base justify-center space-x-6">
         {dataMenu.map((item) => {
           return <NavItem name={item.name} url={item.url} isActive={false} />
         })}

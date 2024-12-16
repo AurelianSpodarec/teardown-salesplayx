@@ -67,9 +67,13 @@ function HomeSectionTestimonials() {
             return <CardTestimonial item={testimonial} />
           }))}
         </div>
-        <div className="text-right">
-          <Link href="/stories" className="text-pink-700 text-lg font-cabinSketch">Read more stories --</Link>
-        </div>
+        <Link href="/stories" className="text-pink-700 text-lg justify-end font-cabinSketch flex items-center space-x-2">
+          <span>Read more stories</span>
+          <svg className="text-pink-700 fill-pink-700" xmlns="http://www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 16 12" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M6.4 0.5L16 6L6.4 11.5V6.95263H0V5.04737H6.4V0.5Z" />
+          </svg>
+        </Link>
+
       </Container>
     </Section >
   )
