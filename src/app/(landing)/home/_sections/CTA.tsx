@@ -37,8 +37,8 @@ function HomeSectionCTA() {
         <div className="flex lg:gap-32">
           <div>
             <div className="mb-6">
-              <h3 className="text-4xl lg:text-5xl mb-4 max-w-md font-bold text-white font-roboto">See SalesPlayX.ai platform in action</h3>
-              <p className="text-white text-md lg:text-lg max-w-[480px]">Get a demo to see how top teams use SalesPlayX.ai to automate research and supercharge prospecting efficiency.</p>
+              <h3 className="text-4xl lg:text-5xl mb-4 max-w-md font-bold text-white font-roboto">See SalesPlayX platform in action</h3>
+              <p className="text-white text-md lg:text-lg max-w-[480px]">Get a demo to see how top teams use SalesPlayX to automate research and supercharge prospecting efficiency.</p>
             </div>
             <button className="flex items-center lg:mr-4 mx-auto lg:mx-0 align-center space-x-2 py-5 px-7 xs:py-4 lg:px-8 bg-[#1b1b1b] text-[#ebebeb] hover:bg-blue-700 xs:text-lg text-center font-semibold leading-none rounded-2xl transition duration-100">
               <span>Book a demo with Meg</span>
